@@ -1,0 +1,678 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ebco | Base Pullout Max 45</title>
+    <link rel="shortcut icon" href="#">
+    <script src="https://use.fontawesome.com/c58334dbd3.js"></script>
+    <style>
+        @font-face {
+            font-family: "Uniform";
+            font-style: normal;
+            font-weight: normal;
+            src: url("/font/Uniform.otf") format("opentype");
+        }
+
+        * {
+            font-family: "Uniform", Tahoma, calibri;
+        }
+
+        :root {
+            --ebcocolor: #124f90;
+            --livsmartcolor: #f36620;
+            --worksmartcolor: #696c6c;
+        }
+
+        body {
+            margin: 0;
+            height: 100vh;
+        }
+
+        /* Hide scrollbar for Chrome */
+        body::-webkit-scrollbar {
+            display: none;
+        }
+
+        /* Hide scrollbar for IE, Edge and Firefox */
+        body {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+
+        /* ============================================================== Logo Start ============================================================== */
+        #product-logo {
+            display: none;
+            float: right;
+        }
+
+        #product-logo img {
+            width: 280px;
+            height: 70px;
+        }
+
+        /* ======================================================= Logo End | Carousel Start ======================================================= */
+        .container-grid {
+            margin-top: 10vw;
+            display: grid;
+            grid-template-columns: 30vw 70vw;
+            grid-template-rows: 1fr 0.5fr;
+        }
+
+        .carousel1 {
+            grid-row-start: 1;
+            grid-row-end: 2;
+            grid-column-start: 1;
+            grid-column-end: 2;
+            margin: 0 0 0 0.5vw;
+            width: 29vw;
+            max-width: 30vw;
+            height: 29vw;
+            max-width: 29vw;
+            position: relative;
+            overflow: hidden;
+            border-radius: 2px;
+        }
+
+        .product-imgs img {
+            width: 29vw;
+            max-width: 800px;
+            height: 29vw;
+            position: absolute;
+            transition: all 0.5s;
+        }
+
+        .product-imgs img {
+            width: 100%;
+            height: 100%;
+            object-fit: contain;
+        }
+
+        .btn {
+            position: absolute;
+            width: 40px;
+            height: 40px;
+            padding: 10px;
+            border: none;
+            border-radius: 50%;
+            z-index: 10px;
+            cursor: pointer;
+            background-color: rgba(255, 255, 255, 0.3);
+            font-size: 18px;
+        }
+
+        .btn img {
+            position: absolute;
+            width: 22px;
+            left: 9px;
+            top: 13px;
+        }
+
+        .btn:active {
+            transform: scale(1.15);
+        }
+
+        .btn:hover {
+            transform: scale(1.15);
+        }
+
+        .btn-prev {
+            top: 45%;
+            left: 2%;
+        }
+
+        .btn-next {
+            top: 45%;
+            right: 2%;
+        }
+
+        /* ==================================================== Carousel End | Accordion Start ==================================================== */
+        .container {
+            grid-row-start: 1;
+            grid-row-end: 2;
+            grid-column-start: 2;
+            grid-column-end: 3;
+            position: absolute;
+            justify-self: right;
+            width: 68vw;
+            max-width: 69vw;
+        }
+
+        .product-title {
+            margin-bottom: 1em;
+            font-size: 2.5em;
+            font-weight: bold;
+            color: var(--ebcocolor);
+        }
+
+        .element {
+            padding-left: 1vw;
+            background: white;
+            color: var(--ebcocolor);
+            margin: 5px 15px 5px 0;
+            border-top: 1px solid var(--ebcocolor);
+            border-radius: 0px;
+        }
+
+        .element .question {
+            display: flex;
+            justify-content: space-between;
+            padding-left: 10px;
+        }
+
+        #desc-title,
+        #specs-title,
+        #fit-instruct-title,
+        #pack-chart-title {
+            font-weight: bold;
+            font-size: 1.2em;
+            padding: 15px 0;
+            width: 100%;
+        }
+
+        .question label {
+            cursor: pointer;
+        }
+
+        .question button {
+            border: none;
+            outline: none;
+            background: none;
+            float: right;
+        }
+
+        .question i {
+            color: var(--ebcocolor);
+            font-size: 20px;
+        }
+
+        #product-specs,
+        #product-pack-chart {
+            min-width: 60%;
+            min-height: 5vw;
+            text-align: center;
+            vertical-align: middle;
+        }
+
+        /* All border */
+        /* td {
+                border: 1px solid var(--ebcocolor);
+                color: black;
+                border-collapse: collapse;
+            } */
+
+        /* Only all inner border */
+        table {
+            border-collapse: collapse;
+        }
+
+        table td {
+            border: 1px solid var(--ebcocolor);
+        }
+
+        table tr:first-child td {
+            border-top: 0;
+        }
+
+        table tr td:first-child {
+            border-left: 0;
+        }
+
+        table tr:last-child td {
+            border-bottom: 0;
+        }
+
+        table tr td:last-child {
+            border-right: 0;
+        }
+
+
+        .element .answer {
+            padding: 1px 20px 5px 20px;
+            animation: animate .7s;
+            color: black;
+        }
+
+        .hideText {
+            display: none;
+        }
+
+        @keyframes animate {
+            from {
+                opacity: 0;
+                transform: scale(0.6);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        #product-fit-instru img {
+            padding-top: 1vw;
+            max-width: 80%;
+            margin: 1em 0;
+        }
+
+        /* ========================================== Accordion End | Button Area Start ========================================== */
+        .btn-area {
+            grid-row-start: 1;
+            grid-row-end: 2;
+            grid-column-start: 2;
+            grid-column-end: 3;
+            padding: 5em 1em 1em 0em;
+        }
+
+        .btn-area button {
+            text-transform: uppercase;
+            padding: 0.5em 1em;
+            margin: 0 0.5em;
+            font-size: 1.1vw;
+            font-weight: bold;
+            background-color: transparent;
+            /* border-color: var(--ebcocolor); */
+            border: 2px solid var(--ebcocolor);
+        }
+
+        .btn-area button label {
+            padding-left: 7px;
+        }
+
+
+
+        /* ========================================== Button Area End | Iframe Area Start ========================================== */
+        iframe {
+            display: none;
+        }
+
+        /* =================================================== Iframe Area End =================================================== */
+    </style>
+</head>
+
+<body>
+    <!-- ========================================================= Logo Start ========================================================= -->
+    <span id="product-logo"><img src="img/logo/Livsmart_logo.png" alt="Logo"></span>
+    <div id="header-parent-div"></div>
+    <!-- =================================================== Logo End | Carousel Start =================================================== -->
+    <div class="container-grid">
+        <div class="carousel1">
+            <div class="product-imgs">
+                <img src="img/product-img/BPO1-45-po-1.jpg" />
+                <img src="img/product-img/BPO1-45-po-2.jpg" />
+            </div>
+            <button class="btn btn-prev">
+                <img src="img/logo/left-arrow-ico-1.png" alt="" srcset="">
+            </button>
+            <button class="btn btn-next">
+                <img src="img/logo/right-arrow-ico-1.png" alt="" srcset="">
+            </button>
+        </div>
+        <!-- ================================================= Carousel End | Accordion Start ================================================= -->
+        <div class="container">
+            <div class="product-title"><label id="product-title">Base Pullout Max 45</label></div>
+            <div class="element">
+                <div class="question">
+                    <label id="desc-title">Description :</label>
+                    <button>
+                        <i class="fa fa-plus-circle"></i>
+                    </button>
+                </div>
+                <div id="product-desc" class="answer hideText">
+                    <ul>
+                        <li>Organize your kitchen essentials at ease with this multipurpose, compact, and flexible
+                            storage unit</li>
+                        <li>Easy access to content from all three sides</li>
+                        <li>Suitable for miscellaneous storage including bottles, jars, knives, ladles, chopping board,
+                            gloves etc.</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="element">
+                <div class="question">
+                    <label id="specs-title">Specification :</label>
+                    <button><i class="fa fa-plus-circle"></i></button>
+                </div>
+                <div class="answer hideText">
+                    <table id="product-specs" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td>Item</td>
+                                <td>Item Code</td>
+                                <td>Size (mm)</td>
+                            </tr>
+                            <tr>
+                                <td>Base Pullout Max 45</td>
+                                <td>BPO1-45</td>
+                                <td>450mm</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="element">
+                <div class="question">
+                    <label id="fit-instruct-title">Fitting Instructions :</label>
+                    <button><i class="fa fa-plus-circle"></i></button>
+                </div>
+                <div class="answer hideText">
+                    <div id="product-fit-instru">
+                        <img src="img/fit-instru-img/BPO1-45-1.jpg" alt="image1">
+                        <img src="img/fit-instru-img/BPO1-45-2.jpg" alt="image2">
+                        <img src="img/fit-instru-img/BPO1-45-3.jpg" alt="image3">
+                    </div>
+                </div>
+            </div>
+            <div class="element">
+                <div class="question">
+                    <label id="pack-chart-title">Packing Chart :</label>
+                    <button><i class="fa fa-plus-circle"></i></button>
+                </div>
+                <div class="answer hideText">
+                    <table id="product-pack-chart" cellspacing="0">
+                        <tbody>
+                            <tr>
+                                <td>Item</td>
+                                <td>Item Code</td>
+                                <td>Size (mm)</td>
+                            </tr>
+                            <tr>
+                                <td>Base Pullout Max 45</td>
+                                <td>BPO1-45</td>
+                                <td>450mm</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+            <div class="btn-area">
+                <button id="inquiry-btn">
+                    <!-- <i class="fa fa-envelope"></i> -->
+                    <img src="img/logo/email-ico.png" style="width:20px" alt="" srcset="">
+                    <label>Send an inquiry</label>
+                </button>
+                <button id="download-btn" onclick="frames['frame'].print()" value="print-brochure">
+                    <!-- <i class="fa fa-download"></i> -->
+                    <img src="img/logo/download-ico.png" style="width: 15px" alt="" srcset="">
+                    <label>Download Brochure</label>
+                </button>
+                <button id="buy-btn">
+                    <!-- <i class="fa fa-cart-plus"></i> -->
+                    <img src="img/logo/cart-ico.png" style="width: 15px" alt="" srcset="">
+                    <label>Buy Now</label>
+                </button>
+            </div>
+        </div>
+    </div>
+    <!-- ========================================== Accordion End | Download Brouchure Page Start ========================================== -->
+    <iframe srcdoc='
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+        <script>
+            $(document).ready(function () {
+                $("#product-title").load("index.html #product-title");
+                $("#product-logo").load("index.html #product-logo");
+                $("#product-imgs").load("index.html .product-imgs");
+                $("#desc-title").load("index.html #desc-title");
+                $("#product-desc").load("index.html #product-desc");
+                $("#specs-title").load("index.html #specs-title");
+                $("#product-specs").load("index.html #product-specs");
+                $("#fit-instruct-title").load("index.html #fit-instruct-title");
+                $("#product-fit-instru").load("index.html #product-fit-instru");
+                $("#pack-chart-title").load("index.html #pack-chart-title");
+                $("#product-pack-chart").load("index.html #product-pack-chart");
+            });
+        </script>
+        <style>
+            :root {
+                --ebcocolor: #124f90;
+                --livsmartcolor: #f36620;
+                --worksmartcolor: #696c6c;
+                --title-border-bottom: linear-gradient(to right, var(--ebcocolor) 80%, var(--livsmartcolor) 50%, var(--worksmartcolor));
+            }
+            
+            @font-face {
+                font-family: "Uniform";
+                font-style: normal;
+                font-weight: normal;
+                src: url("font/Uniform.otf") format("opentype");
+            }
+
+            * {
+                font-family: Tahoma, calibri;
+            }
+
+            .main {
+                font-family: calibri;
+                display: flex;
+                flex-direction: column;
+                gap: 1px;
+            }
+
+            #product-logo {
+                float: right;
+            }
+
+            #product-logo img {
+                width: 20vw;
+                height: 5vw;
+            }
+
+            div#product-title {
+                padding: inherit;
+            }
+
+            #product-title {
+                position: relative;
+                font-size: 4vw;
+                float: left;
+                padding: 2vw 0 7vw;
+                color: var(--ebcocolor);
+            }
+
+            #product-title::before {
+                content: "";
+                position: absolute;
+                top: 60%;
+                width: 100%;
+                height: 2px;
+                border-radius: 2px;
+                background: var(--title-border-bottom);
+            }
+
+            #desc-title,
+            #fit-instruct-title,
+            #specs-title,
+            #pack-chart-title {
+                font-size: 1em;
+                color: var(--ebcocolor);
+            }
+
+            #desc-title {
+                padding: 3vw 0 2vw 0 ;
+            }
+
+            #fit-instruct-title {
+                padding: 5vw 0 3vw 0;   
+            }
+
+            #specs-title {
+                padding: 3vw 0 2.5vw 0;
+            }
+
+            #pack-chart-title {
+                padding: 4vw 0 3vw 0;
+            }
+
+            ul {
+                padding-inline-start: 2.3vw;
+            }
+
+            #product-desc,
+            #product-fit-instru {
+                font-size: 0.8em;
+            }
+
+            #product-specs,
+            #product-pack-chart {
+                max-width: 80vw;
+                text-align: center;
+                min-width: 40vw;
+                min-height: 5vw;
+                font-size: 0.8em;
+            }
+
+            table,
+            tbody,
+            tr,
+            td {
+                padding: 1.2vw 3.5vw;
+            }
+
+            /* Inner line border */
+            table {
+                border-collapse: collapse;
+            }
+
+            table td {
+                border: 1px solid var(--ebcocolor);
+            }
+
+            table tr:first-child td {
+                border-top: 0;
+            }
+
+            table tr td:first-child {
+                border-left: 0;
+            }
+
+            table tr:last-child td {
+                border-bottom: 0;
+            }
+
+            table tr td:last-child {
+                border-right: 0;
+            }
+
+            #product-imgs {
+                display: flex;
+            }
+
+            #product-imgs img {
+                padding: 5px;
+                max-height: 25vw;
+                max-width: 25vw;
+            }
+
+            div button {
+                display: none;
+            }
+
+            #product-fit-instru img {
+                max-width: 90vw;
+                margin: 1em 0;
+            }
+        </style>
+        <div class="main">
+            <div class="header">
+                <div id="product-title"></div>
+                <div id="product-logo"></div>
+            </div>
+            <div id="product-imgs"></div>
+            <div id="desc-title"></div>
+            <div id="product-desc"></div>
+            <div id="specs-title"></div>
+            <div id="product-specs"></div>
+            <div id="fit-instruct-title"></div>
+            <div id="product-fit-instru"></div>
+            <div id="pack-chart-title"></div>
+            <div id="product-pack-chart"></div>
+        </div>
+    '  name="frame"></iframe>
+    <!-- ===================================== Download Brouchure Page End | Product Page JS Start ===================================== -->
+    <script>
+        const slides = document.querySelectorAll(".product-imgs img");
+
+        slides.forEach((slide, indx) => {
+            slide.style.transform = `translateX(${indx * 100}%)`;
+            slide.style.transitionDuration = "10ms";
+            slide.style.transitionDelay = "-2s";
+        });
+
+        const prevSlideBtn = document.querySelector(".btn-prev");
+        const nextSlideBtn = document.querySelector(".btn-next");
+        let curSlide = 0;
+        let maxSlide = slides.length - 1;
+
+        nextSlideBtn.addEventListener("click", function () {
+            if (curSlide === maxSlide) {
+            } else {
+                curSlide++;
+            }
+
+            slides.forEach((slide, indx) => {
+                slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
+                slide.style.transitionDuration = "500ms";
+                slide.style.transitionDelay = "1ms";
+
+                if (curSlide != 0) {
+                    prevSlideBtn.style.visibility = "visible";
+                }
+                if (curSlide === maxSlide) {
+                    nextSlideBtn.style.visibility = "hidden";
+                }
+            });
+        });
+
+        if (curSlide === 0) {
+            prevSlideBtn.style.visibility = "hidden";
+        }
+
+        prevSlideBtn.addEventListener("click", function () {
+            if (curSlide === 0) {
+            } else {
+                curSlide--;
+            }
+
+            slides.forEach((slide, indx) => {
+                slide.style.transform = `translateX(${100 * (indx - curSlide)}%)`;
+                slide.style.transitionDuration = "500ms";
+                slide.style.transitionDelay = "1ms";
+
+
+                if (curSlide === 0) {
+                    prevSlideBtn.style.visibility = "hidden";
+                }
+                if (curSlide != maxSlide) {
+                    nextSlideBtn.style.visibility = "visible";
+                }
+            });
+        });
+
+        const elements = document.querySelectorAll('.element');
+
+        elements.forEach(element => {
+            let btn = element.querySelector('.question');
+            let icon = element.querySelector('.question i');
+            var answer = element.lastElementChild;
+            var answers = document.querySelectorAll('.element .answer');
+
+            btn.addEventListener('click', () => {
+                answers.forEach(ans => {
+                    let ansIcon = ans.parentElement.querySelector('i');
+                    if (answer !== ans) {
+                        ans.classList.add('hideText');
+                        ansIcon.className = 'fa fa-plus-circle';
+                    }
+                });
+
+                answer.classList.toggle('hideText');
+                icon.className === 'fa fa-plus-circle' ? icon.className = 'fa fa-minus-circle' : icon.className = 'fa fa-plus-circle';
+            });
+        });
+    </script>
+    <!-- ====================================================== Product Page JS End ====================================================== -->
+</body>
+
+</html>
